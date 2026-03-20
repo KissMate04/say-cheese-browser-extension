@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Say Cheese Options</title>
+  <style>
+    .row {
+        margin: 10px;
+        
+    }
+    .row span {
+        margin-right: 2px;
+    }
+    .row input {
+        margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Language Options</h1>
+  <p>Modify what languages are available. </p>
+  <p>You can learn about language codes here: <a href="https://developers.google.com/workspace/admin/directory/v1/languages" target="_blank">Google Language Codes</a>.</p>
+
+  <div id="rows"></div>
+
+  <div class="actions">
+    <button id="addRow" type="button">+</button>
+    <button id="save" type="button">Save</button>
+  </div>
+
+  <div id="status"></div>
+
+  <script src="options.js"></script>
+</body>
+</html>

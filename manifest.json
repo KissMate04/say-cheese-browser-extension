@@ -1,9 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Say Cheese",
-  "version": "0.5",
+  "version": "0.6",
   "description": "Says the selected word out loud",
   "permissions": ["contextMenus", "tts", "storage"],
+  "options_page": "options.html",
   "background": {
     "service_worker": "background.js"
   }
