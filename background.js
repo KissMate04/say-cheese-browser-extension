@@ -1,5 +1,12 @@
 // Icon source: https://www.flaticon.com/free-icon/cheese_4063297
 
+const DEFAULT_LANGUAGES = [
+  { title: "In English", lang: "en" },
+  { title: "In French", lang: "fr" },
+  { title: "In Hungarian", lang: "hu" },
+  { title: "In Italian", lang: "it" }
+];
+
 // Create right-click menu
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
@@ -7,8 +14,10 @@ chrome.runtime.onInstalled.addListener(() => {
     title: "Say Cheese",
     contexts: ["selection"]
   });
-    chrome.storage.sync.get(["languages"], (result) => {
-    result.languages.forEach((item) => {
+  chrome.storage.sync.get({ languages: DEFAULT_LANGUAGES }, (result) => {
+    const languages = result.languages || DEFAULT_LANGUAGES;
+    console.log("Loaded languages:", languages);
+    languages.forEach((item) => {
         chrome.contextMenus.create({
             title: item.title,
             id: item.lang,
@@ -16,7 +25,7 @@ chrome.runtime.onInstalled.addListener(() => {
             contexts: ["selection"]
         });
     });
-});
+  });
 });
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
@@ -27,6 +36,8 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 });
 
 function rebuildContextMenu(languages) {
+    const safeLanguages = Array.isArray(languages) ? languages : [];
+
     chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({
       id: "parent",
@@ -34,7 +45,7 @@ function rebuildContextMenu(languages) {
       contexts: ["selection"]
     });
 
-    languages.forEach((item) => {
+    safeLanguages.forEach((item) => {
       chrome.contextMenus.create({
         id: item.lang,
         title: item.title,
