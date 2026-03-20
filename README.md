@@ -23,6 +23,10 @@ If you select a language that's not downloaded it will use the default voice.
 * Under Manage voices you can add new voice languages.
 * Upon installing a new voice it's reccommended to close and reopen your browser.
 
+### 3. Customizing:
+* Go to you extensions look for Say Cheese's options/extension options.
+* You can add a new row with the **+** icon.
+
 ---
 
 ## How to use:
