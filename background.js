@@ -1,3 +1,5 @@
+// Icon source: https://www.flaticon.com/free-icon/cheese_4063297
+
 // Create right-click menu
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
